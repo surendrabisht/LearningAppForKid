@@ -106,9 +106,9 @@ for i in range(no_of_questions):
     display_question(no1,no2,question_type)
     start_time = time.time()
     output_entered = input()
-    output_by_user = convert_string_to_numeric(output_entered)
     end_time = time.time()
     time_taken = end_time - start_time
+    output_by_user = convert_string_to_numeric(output_entered)
     output_by_computer = get_result(no1, no2,question_type)
     is_answer_correct = False
     if output_by_computer == output_by_user:
