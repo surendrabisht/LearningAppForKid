@@ -35,10 +35,10 @@ def get_normalize_spacing_in_nos(no1, no2):
                  max_len) if diff > 0 else (" "*abs(diff)+no1_str, no2_str, max_len)
     return nos_tuple
 
-def display_question(no1: int, no2: int, question_type: QuestionTypes):
+def display_question(question_no:int, no1: int, no2: int, question_type: QuestionTypes):
+    print(f"\n\n Q.{question_no}", end="\n\n")
     if question_type != QuestionTypes.Division:
         tuple_no_as_string = get_normalize_spacing_in_nos(no1, no2)
-        print(f"Q.{i+1})", end="\n\n")
         print(" "*20, tuple_no_as_string[0])
         print(" "*18, question_type.value+" "+tuple_no_as_string[1])
         print('_'*(20+tuple_no_as_string[2]))
@@ -51,6 +51,7 @@ def display_question(no1: int, no2: int, question_type: QuestionTypes):
         print(" "*(no2_length+1+x)+"_"*((no1_length*2)+x))
         print(no2+" "*x+"|"+" "*x+no1)
         print("_"*(no2_length+x))
+    print("\n\t\t")
 
 def save_report(list_of_questions:list):
     df = pd.DataFrame(list_of_questions)
@@ -103,7 +104,7 @@ for i in range(no_of_questions):
     no1 = random.randrange(1, max_no)
     no2 = random.randrange(1, max_no)
     question_type = random.choice(question_types)
-    display_question(no1,no2,question_type)
+    display_question(i+1,no1,no2,question_type)
     start_time = time.time()
     output_entered = input()
     end_time = time.time()
